@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <title>会员制餐厅</title>
+    <title>Foodbear</title>
     <link rel="icon" href="./../images/favico.ico">
     <!--不同屏幕尺寸根字体设置-->
     <script src="./../js/base.js"></script>
@@ -27,36 +27,36 @@
     </div>
     <div class="divContent">
         <div class="divItem">
-            <span>联系人：</span>
-            <el-input placeholder=" 请填写收货人的姓名" v-model="form.consignee" maxlength='10' class="inputUser"/>
+            <span>Contact：</span>
+            <el-input placeholder=" Enter consignee's name" v-model="form.consignee" maxlength='10' class="inputUser"/>
             </el-input>
             <span class="spanChecked" @click="form.sex = '1'">
                     <i :class="{iActive:form.sex === '1'}"></i>
-                    先生
+                    Mr
                    </span>
             <span class="spanChecked" @click="form.sex = '0'">
                     <i :class="{iActive:form.sex === '0'}"></i>
-                    女士
+                    Ms
                 </span>
         </div>
         <div class="divItem">
             <span>email：</span>
-            <el-input placeholder=" 请填写收货人手机号码" v-model="form.email" maxlength='20' style="width: calc(100% - 80rem);"/>
+            <el-input placeholder=" Enter phone number" v-model="form.email" maxlength='20' style="width: calc(100% - 80rem);"/>
             </el-input>
         </div>
         <div class="divItem">
-            <span>收货地址：</span>
-            <el-input placeholder=" 请输入收货地址" v-model="form.detail" maxlength='140'/>
+            <span>Address：</span>
+            <el-input placeholder=" Enter the shipping address" v-model="form.detail" maxlength='140'/>
             </el-input>
         </div>
         <div class="divItem ">
             <!-- 标签会 -->
-            <span>标签：</span>
+            <span>Tag：</span>
             <span v-for="(item,index) in labelList" :key="index" @click="form.label = item;activeIndex = index"
                   :class="{spanItem:true,spanActiveSchool:activeIndex === index}">{{item}}</span>
         </div>
-        <div class="divSave" @click="saveAddress">保存地址</div>
-        <div class="divDelete" @click="deleteAddress" v-if="id">删除地址</div>
+        <div class="divSave" @click="saveAddress">Save address</div>
+        <div class="divDelete" @click="deleteAddress" v-if="id">Delete address</div>
     </div>
 </div>
 <!-- 开发环境版本,包含了有帮助的命令行警告 -->
@@ -75,16 +75,16 @@
         el: "#address_edit",
         data() {
             return {
-                title: '新增收货地址',
+                title: 'Add Address',
                 form: {
                     consignee: '',//联系人
                     email: undefined,//手机号
                     sex: '1',//0表示女 1 表示男
                     detail: '',//收货地址
-                    label: '公司',//标签
+                    label: 'Corp',//标签
                 },
                 labelList: [
-                    '无', '公司', '家', '学校'
+                    'None', 'Corp', 'Home', 'SCH'
                 ],
                 id: undefined,
                 activeIndex: 0
@@ -104,7 +104,7 @@
                 const params = parseUrl(window.location.search)
                 this.id = params.id
                 if (params.id) {
-                    this.title = '编辑收货地址'
+                    this.title = 'Edit Address'
                     const res = await addressFindOneApi(params.id)
                     if (res.code === 1) {
                         this.form = res.data
@@ -116,20 +116,20 @@
             async saveAddress() {
                 const form = this.form
                 if (!form.consignee) {
-                    this.$notify({type: 'warning', message: '请输入联系人'});
+                    this.$notify({type: 'warning', message: 'Enter Contact Person'});
                     return
                 }
                 if (!form.email) {
-                    this.$notify({type: 'warning', message: '请输入email'});
+                    this.$notify({type: 'warning', message: 'Enter email'});
                     return
                 }
                 if (!form.detail) {
-                    this.$notify({type: 'warning', message: '请输入收货地址'});
+                    this.$notify({type: 'warning', message: 'Enter Address'});
                     return
                 }
                 const reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
                 if (!reg.test(form.email)) {
-                    this.$notify({type: 'warning', message: 'email不合法'});
+                    this.$notify({type: 'warning', message: 'email is not validate'});
                     return
                 }
                 let res = {}
@@ -149,8 +149,8 @@
             },
             deleteAddress() {
                 this.$dialog.confirm({
-                    title: '确认删除',
-                    message: '确认要删除当前地址吗？',
+                    title: 'confirm deletion',
+                    message: 'Are you sure you want to delete the current address?',
                 })
                     .then(async () => {
                         const res = await deleteAddressApi({ids: this.id})

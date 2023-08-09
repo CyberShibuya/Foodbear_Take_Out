@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <title>会员制餐厅</title>
+    <title>Foodbear</title>
     <link rel="icon" href="./../images/favico.ico">
     <!--不同屏幕尺寸根字体设置-->
     <script src="./../js/base.js"></script>
@@ -22,7 +22,7 @@
 <div id="add_order" class="app">
     <div class="divHead">
         <div class="divTitle">
-            <i class="el-icon-arrow-left" @click="goBack"></i>菩提阁
+            <i class="el-icon-arrow-left" @click="goBack"></i>Foodbear
         </div>
     </div>
     <div class="divContent">
@@ -36,10 +36,10 @@
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="divSplit"></div>
-            <div class="divFinishTime">预计{{finishTime}}送达</div>
+            <div class="divFinishTime">Estimated{{finishTime}}Dilivery</div>
         </div>
         <div class="order">
-            <div class="title">订单明细</div>
+            <div class="title">Order Detail</div>
             <div class="divSplit"></div>
             <div class="itemList">
                 <div class="item" v-for="(item,index) in cartData" :key="index">
@@ -61,14 +61,14 @@
             </div>
         </div>
         <div class="note">
-            <div class="title">备注</div>
+            <div class="title">Remark</div>
             <van-field
                     v-model="note"
                     rows="2"
                     autosize
                     type="textarea"
                     maxlength="50"
-                    placeholder="请输入您需要备注的信息"
+                    placeholder="Please enter the information you need to note"
                     show-word-limit
             />
         </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="divPrice"></div>
         <div :class="{btnSubmitActive: cartData && cartData.length > 0, btnSubmit:!cartData || cartData.length<1}"
-             @click="goToPaySuccess">去支付
+             @click="goToPaySuccess">Check Out
         </div>
     </div>
 </div>

@@ -43,7 +43,7 @@
 
     // 响应拦截器
     service.interceptors.response.use(res => {
-            console.log('---响应拦截器---', res)
+            console.log('---Response Interceptor---', res)
             if (res.data.code === 0 && res.data.msg === 'NOTLOGIN') {// 返回登录页面
                 window.top.location.href = '/front/page/login.html'
             } else {
@@ -53,11 +53,11 @@
         error => {
             let {message} = error;
             if (message == "Network Error") {
-                message = "后端接口连接异常";
+                message = "Abnormal backend interface connection";
             } else if (message.includes("timeout")) {
-                message = "系统接口请求超时";
+                message = "System interface request timed out";
             } else if (message.includes("Request failed with status code")) {
-                message = "系统接口" + message.substr(message.length - 3) + "异常";
+                message = "System Interface" + message.substr(message.length - 3) + "Error";
             }
             window.vant.Notify({
                 message: message,

@@ -31,6 +31,13 @@
 <!-- 引入axios -->
 <script src="../../plugins/axios/axios.min.js"></script>
 <script src="../../js/index.js"></script>
+<script src="//unpkg.com/vue@2"></script>
+<script src="//unpkg.com/element-ui"></script>
+<script src="//unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+
+<script>
+    ELEMENT.locale(ELEMENT.lang.en)
+</script>
 <script>
     new Vue({
         el: '#food-add-app',
@@ -48,12 +55,12 @@
                     const suffix = file.name.split('.')[1]
                     const size = file.size / 1024 / 1024 < 2
                     if (['png', 'jpeg', 'jpg'].indexOf(suffix) < 0) {
-                        this.$message.error('上传图片只支持 png、jpeg、jpg 格式！')
+                        this.$message.error('Uploading pictures only supports png, jpeg, jpg formats!')
                         this.$refs.upload.clearFiles()
                         return false
                     }
                     if (!size) {
-                        this.$message.error('上传文件大小不能超过 2MB!')
+                        this.$message.error('Upload file size cannot exceed 2MB!')
                         return false
                     }
                     return file

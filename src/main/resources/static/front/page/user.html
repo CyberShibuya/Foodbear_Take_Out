@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <title>会员制餐厅</title>
+    <title>Foodbear</title>
     <link rel="icon" href="./../images/favico.ico">
     <!--element-ui的样式-->
     <link rel="stylesheet" href="../../backend/plugins/element-ui/index.css"/>
@@ -20,7 +20,7 @@
 <div id="user" class="app">
     <div class="divHead">
         <div class="divTitle">
-            <i class="el-icon-arrow-left" @click="goBack"></i>个人中心
+            <i class="el-icon-arrow-left" @click="goBack"></i>Personal Center
         </div>
         <div class="divUser">
             <img src="./../images/headPage.png"/>
@@ -34,18 +34,18 @@
         <div class="divLinks">
             <div class="item" @click="toAddressPage">
                 <img src="./../images/locations.png"/>
-                <span>地址管理</span>
+                <span>Address</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="divSplit"></div>
             <div class="item" @click="toOrderPage">
                 <img src="./../images/orders.png"/>
-                <span>历史订单</span>
+                <span>Order history</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
         </div>
         <div class="divOrders" v-if="order[0]">
-            <div class="title">最新订单</div>
+            <div class="title">Latest order</div>
             <div class="timeStatus">
                 <span>{{order[0].orderTime}}</span>
                 <span>{{getStatus(order[0].status)}}</span>
@@ -58,15 +58,15 @@
                 </div>
             </div>
             <div class="result">
-                <span>共{{order[0].sumNum}} 件商品,实付</span>
-                <span class="price">￥{{order[0].amount}}</span>
+                <span>Total {{order[0].sumNum}} items, paid</span>
+                <span class="price">${{order[0].amount}}</span>
             </div>
             <div class="btn" v-if="order[0].status === 4">
-                <div class="btnAgain" @click="addOrderAgain">再来一单</div>
+                <div class="btnAgain" @click="addOrderAgain">Order more</div>
             </div>
         </div>
         <div class="quitLogin" @click="toPageLogin">
-            退出登录
+            Log Out
         </div>
     </div>
 </div>
@@ -152,19 +152,19 @@
                 let str = ''
                 switch (status) {
                     case 1:
-                        str = '待付款'
+                        str = 'Pending payment'
                         break;
                     case 2:
-                        str = '正在派送'
+                        str = 'Delivering'
                         break;
                     case 3:
-                        str = '已派送'
+                        str = 'Dispatched'
                         break;
                     case 4:
-                        str = '已完成'
+                        str = 'Completed'
                         break;
                     case 5:
-                        str = '已取消'
+                        str = 'Canceled'
                         break;
 
                 }

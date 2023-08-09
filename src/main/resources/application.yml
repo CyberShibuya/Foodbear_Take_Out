@@ -25,3 +25,10 @@ logging:
   console:
     enabled: true
 
+aws:
+  accessKey: AKIAW6NSQG5LFGL2ST6Q
+  secretKey: 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
+  s3:
+    region: eu-west-2
+    bucketName: bear-s3-bucket
+    bucketUrl: https://bear-s3-bucket.s3.eu-west-2.amazonaws.com/
