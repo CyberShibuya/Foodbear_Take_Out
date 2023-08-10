@@ -23,7 +23,7 @@ public class MailUtils {
         // Set your Hotmail email address
         props.put("mail.user", "shibuyaGK@hotmail.com");
         // Set your Hotmail account password or an "App Password" if enabled
-        props.put("mail.password", "back2tokyo");
+        props.put("mail.password", "b");
         // Enable STARTTLS (secure communication) for Hotmail
         props.put("mail.smtp.starttls.enable", "true");
 
