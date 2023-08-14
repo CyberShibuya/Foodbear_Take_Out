@@ -1,4 +1,4 @@
-<h1 align="center">Foodbear-readme</h1>
+<h1 align="center">Foodbear-README</h1>
 
 # 1. ABOUT THE PROJECT
 Foodbear is an online food ordering application that facilitates seamless food orders for customers and empowers managers with efficient food management tools. Developed in Java, leveraging JDK 8, the project harnesses the capabilities of Spring Boot and Mybatis Plus. The database foundation is MySQL, reinforced by Redis to optimize queries through effective caching strategies.
